@@ -1,4 +1,4 @@
-      import java.io.*;
+     import java.io.*;
 import java.util.*;
 
 class TestClass {
@@ -9,15 +9,16 @@ class TestClass {
        for(int i=1;i<=t;i++)
        {
            HashMap<String,Integer> names=new HashMap();
-           String names1[]=new String[100];
+           
            int n=sc.nextInt();
-           for(int j=1;j<=n;j++)
+           String names1[]=new String[n];
+           for(int j=0;j<n;j++)
            {
                String nm=sc.next();
                names.put(nm,0);
                names1[j]=nm;
            }
-           for(int m=1;m<=n;m++)
+           for(int m=0;m<n;m++)
            {
                String giver=sc.next();
                int money=sc.nextInt();
@@ -25,7 +26,7 @@ class TestClass {
                if(people!=0)
                {
                    int distribute=money/people;
-                   for(int j=1;j<=people;j++)
+                   for(int j=0;j<people;j++)
                    {
                       String receiver=sc.next();
                       names.put(receiver,names.get(receiver)+distribute);
@@ -35,7 +36,7 @@ class TestClass {
                
            }
            
-   for(int j=1;j<=n;j++)
+   for(int j=0;j<n;j++)
    {
        int value=names.get(names1[j]);
        System.out.println(names1[j] + " " + value);
