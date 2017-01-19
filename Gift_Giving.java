@@ -1,4 +1,4 @@
-import java.io.*;
+      import java.io.*;
 import java.util.*;
 
 class TestClass {
@@ -9,10 +9,13 @@ class TestClass {
        for(int i=1;i<=t;i++)
        {
            HashMap<String,Integer> names=new HashMap();
+           String names1[]=new String[100];
            int n=sc.nextInt();
            for(int j=1;j<=n;j++)
            {
-               names.put(sc.next(),0);
+               String nm=sc.next();
+               names.put(nm,0);
+               names1[j]=nm;
            }
            for(int m=1;m<=n;m++)
            {
@@ -31,13 +34,13 @@ class TestClass {
                }
                
            }
-           Set keys = names.keySet();
-
-   for (Iterator itr = keys.iterator(); itr.hasNext(); ) {
-       String key = (String) itr.next();
-       int value = names.get(key);
-       System.out.println(key + " " + value);
+           
+   for(int j=1;j<=n;j++)
+   {
+       int value=names.get(names1[j]);
+       System.out.println(names1[j] + " " + value);
    }
+   
        }
     }
 }
