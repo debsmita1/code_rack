@@ -1,17 +1,17 @@
-     import java.io.*;
+import java.io.*;
 import java.util.*;
 
 class TestClass {
     public static void main(String args[] ) throws Exception {
        
        Scanner sc= new Scanner (System.in);
-       int t=sc.nextInt();
+       int t=sc.nextInt();   //no of test cases
        for(int i=1;i<=t;i++)
        {
-           HashMap<String,Integer> names=new HashMap();
+           HashMap<String,Integer> names=new HashMap();  //Hashmap having names as the key and amount of money each one of them is having as the value
            
            int n=sc.nextInt();
-           String names1[]=new String[n];
+           String names1[]=new String[n];  //String array containing only the names of the people 
            for(int j=0;j<n;j++)
            {
                String nm=sc.next();
