@@ -1,0 +1,30 @@
+public Node* alternate_merge_LinkedList(Node *list1,Node *list2)
+{
+    
+    int i=1;
+    Node *temp=list1;
+    Node *temp2=list1->next;
+    
+    while(temp!=null)
+    {
+        if(i%2==1)
+        {
+            temp->next=list2;
+            list2=list2->next;
+            temp=temp->next;
+        }
+        else if(i%2==0)
+        {
+            temp->next=temp2;
+            temp2=temp2->next;
+            temp=temp->next;
+        }
+        if(temp->next==null || list2->next==null)
+        {
+            temp->next=list2;
+            break;
+        }
+        i++;
+    }
+    return list1;
+}
