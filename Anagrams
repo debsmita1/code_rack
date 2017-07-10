@@ -1,0 +1,61 @@
+import java.io.*;
+import java.util.*;
+
+
+public class Anagrams
+{
+
+ private static boolean isAnagram(String a, String b) {
+       
+        if(a.length()!=b.length())
+            return false;
+        
+        Map<Character,Integer> stringFrequency_1=frequency(a);
+         Map<Character,Integer> stringFrequency_2=frequency(b);
+       
+        
+        for (Map.Entry<Character, Integer> entry : stringFrequency_1.entrySet()) {
+            if(stringFrequency_2.containsKey(entry.getKey()) && stringFrequency_2.get(entry.getKey())==entry.getValue
+               ())
+                continue;
+            else
+                return false;
+        }
+   
+      return true;  
+    }
+
+private static Map<Character,Integer> frequency(String s)
+{
+    Map<Character,Integer> stringFrequency=new HashMap<Character,Integer>();
+    
+    for(int i=0;i<s.length();i++)
+    {
+        if(stringFrequency.containsKey(Character.toUpperCase(s.charAt(i))))
+        {
+            stringFrequency.put(Character.toUpperCase(s.charAt(i)),stringFrequency.get(Character.toUpperCase(s.charAt(i)))+1);
+           
+        }
+        else
+        {
+            stringFrequency.put(Character.toUpperCase(s.charAt(i)),1);
+        }
+    }
+   
+    return stringFrequency;
+}
+
+  public static void main(String args[])
+  { 
+    Scanner sc= new Scanner(System.in);
+    String string_1=sc.next();
+    String string_2=sc.next();
+    
+    if(isAnagram(string_1, string_2))
+      System.out.println("Anagrams");
+      
+     else
+      System.out.println("Not Anagrams");
+  }
+  
+}
