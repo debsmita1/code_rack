@@ -1,18 +1,19 @@
+package com;
+
 import java.io.*;
 import java.util.*;
 
-public class Solution {
+public class Balanced_Subsequence {
 
     public static void main(String[] args) {
-      int t,i,j,count;
+      int j,flag;
         String s;
         
         Scanner sc= new Scanner(System.in);
-        t=sc.nextInt();
+       
         
-        for(i=1;i<=t;i++)
-            {
-            count=0;
+       
+            flag=0;
             s=sc.next();
             j=0;
            Stack<Character> stack= new Stack<Character>();
@@ -23,16 +24,46 @@ public class Solution {
                     {
                         stack.push(s.charAt(j));
                     }
-                else if(s.charAt(j)==')' && !stack.empty())
+                else if((s.charAt(j)==')' || s.charAt(j)=='}' || s.charAt(j)==']')&& !stack.empty())
                 {   
-                    stack.pop();
-                    count=count+2;
+                	if(s.charAt(j)==')' && stack.peek()=='(')
+                	{
+                		stack.pop();
+                	}
+                	else if(s.charAt(j)=='{' && stack.peek()!='{')
+                	{
+                		stack.pop();
+                	}
+                	else if(s.charAt(j)=='[' && stack.peek()!=']')
+                	{
+                		stack.pop();
+                	}
+                	else
+                	{
+                		flag=1;
+                		break;
+                	}
                        
                     }
+                    
+                else if((s.charAt(j)==')' || s.charAt(j)=='}' || s.charAt(j)==']')&& stack.empty())
+                {
+                	flag=1;
+                	break;
+                }
+                
                    j++;
                         
             }
-            System.out.println(count);
+            if(!stack.empty())
+            {
+            	flag=1;
+            }
+            if(flag==1)
+            	System.out.println("Unbalanced Sequence");
+            else
+            	System.out.println("Balanced Sequence");
+            
         }
     }
-}
+
