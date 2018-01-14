@@ -6,7 +6,8 @@ import java.util.*;
 public class Balanced_Subsequence {
 
     public static void main(String[] args) {
-      int j,flag;
+      
+            	 int j,flag;
         String s;
         
         Scanner sc= new Scanner(System.in);
@@ -20,7 +21,7 @@ public class Balanced_Subsequence {
                 
             while(j<s.length())
                 {
-                    if(s.charAt(j)=='(')
+                    if(s.charAt(j)=='(' || s.charAt(j)=='{' || s.charAt(j)=='[')
                     {
                         stack.push(s.charAt(j));
                     }
@@ -30,11 +31,11 @@ public class Balanced_Subsequence {
                 	{
                 		stack.pop();
                 	}
-                	else if(s.charAt(j)=='{' && stack.peek()!='{')
+                	else if(s.charAt(j)=='}' && stack.peek()=='{')
                 	{
                 		stack.pop();
                 	}
-                	else if(s.charAt(j)=='[' && stack.peek()!=']')
+                	else if(s.charAt(j)==']' && stack.peek()=='[')
                 	{
                 		stack.pop();
                 	}
