@@ -5,7 +5,7 @@ import java.io.*;
 class BurgerOptimization {
     public static void main(String args[] ) throws Exception {
        
-       Scanner sc= new Scanner(System.in);
+      Scanner sc= new Scanner(System.in);
     	
        int t=sc.nextInt();
        int i=1;
@@ -26,21 +26,13 @@ class BurgerOptimization {
            Arrays.sort(arr2);
            int index=0;
            
-           if(k%2==0)
+           for(int l=0;l<k/2;l++)
            {
-               for(int l=0;l<k/2;l++)
-               {
-                   arr1[index]=arr1[index+1]=l;
-                   index=index+2;
-               }
+               arr1[index]=arr1[index+1]=l;
+               index=index+2;
            }
-           else
-           {
-               for(int l=0;l<k/2;l++)
-               {
-                   arr1[index]=arr1[index+1]=l;
-                   index=index+2;
-               }
+           if(k%2 !=0)
+           { 
                arr1[index]=k/2;
            }
            for(int l=0;l<k;l++)
