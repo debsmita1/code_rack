@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 
 class BurgerOptimization {
@@ -18,10 +17,7 @@ class BurgerOptimization {
            int answer=0;
            
            for(int j=0;j<k;j++)
-           {
               arr2[j]=sc.nextInt();  
-        	  
-           }
            
            Arrays.sort(arr2);
            int index=0;
