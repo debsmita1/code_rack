@@ -85,6 +85,59 @@ public class BinarySearchTree {
 			inorderTraversal(root.right);
 			
 	}
+	private static int heightOfTree(TreeNode root) 
+    {
+        if (root == null) 
+            return 0;
+        else
+        {
+           
+            int lheight = heightOfTree(root.left);
+            int rheight = heightOfTree(root.right);
+  
+           
+            if (lheight > rheight) 
+                return (lheight + 1);
+            else
+                return (rheight + 1);
+        }
+    }
+	
+	private static void zigzagTraversal(TreeNode node)
+	{
+		Stack<TreeNode> s1=new Stack<TreeNode>();
+		Stack<TreeNode> s2=new Stack<TreeNode>();
+		
+		s1.push(node);
+		
+		while(!s1.empty() || !s2.empty())
+		{
+				while(!s1.empty())
+				{
+					TreeNode temp=s1.pop();
+					System.out.print(temp.data+" ");
+					//insert elements in s2 from right to left
+					if(temp.right!=null)
+						s2.push(temp.right);
+					if(temp.left!=null)
+						s2.push(temp.left);
+				}
+				
+				while(!s2.empty())
+				{
+					TreeNode temp=s2.pop();
+					System.out.print(temp.data+" ");
+					//insert elements in s1 from left to right
+					if(temp.left!=null)
+						s1.push(temp.left);
+					if(temp.right!=null)
+						s1.push(temp.right);
+				}
+				
+		}
+		
+		
+	}
 	
 	public static int sumOfKSmallestNodes(BinarySearchTree bst,int k)
 	{
@@ -106,15 +159,13 @@ public class BinarySearchTree {
 		Scanner sc= new Scanner(System.in);
 		
 		BinarySearchTree bst= new BinarySearchTree();
+		int n=sc.nextInt();
 		
-		bst.buildBST(new TreeNode(90));
-		bst.buildBST(new TreeNode(45));
-		bst.buildBST(new TreeNode(60));
-		bst.buildBST(new TreeNode(110));
-		bst.buildBST(new TreeNode(100));
-		bst.buildBST(new TreeNode(96));
-		bst.buildBST(new TreeNode(34));
-		bst.buildBST(new TreeNode(80));
+		for(int i=0;i<n;i++)
+		{
+			int node=sc.nextInt();
+		bst.buildBST(new TreeNode(node));
+		}
 		
 		int key=sc.nextInt();
 		System.out.println(searchKey(bst,key));
@@ -122,8 +173,9 @@ public class BinarySearchTree {
 		int k=sc.nextInt();
 		System.out.println(sumOfKSmallestNodes(bst, k));
 		
+		int h=heightOfTree(bst.root);
+		System.out.println("Height of the BST "+h);
+		zigzagTraversal(bst.root);
+		
 	}
-	
-	
-
 }
