@@ -178,7 +178,4 @@ public class BinarySearchTree {
 		zigzagTraversal(bst.root);
 		
 	}
-	
-	
-
 }
